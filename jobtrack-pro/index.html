@@ -1,0 +1,1533 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JobTrack Pro | Smart Job Application Tracker</title>
+
+<meta name="description" content="JobTrack Pro is a smart job application tracker to manage applications, interviews and job offers.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f5f7fb;
+    color:#172033;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    background:#101828;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 7%;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 3px 15px rgba(0,0,0,.12);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#5b8cff;
+}
+
+.navbar a{
+    text-decoration:none;
+    color:#ddd;
+    margin-left:25px;
+    font-size:15px;
+}
+
+.navbar a:hover{
+    color:#5b8cff;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:440px;
+    padding:70px 7%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
+
+    background:
+    linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+}
+
+.hero-content{
+    max-width:650px;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:8px 15px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    color:#bcd0ff;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:52px;
+    line-height:1.1;
+    margin-bottom:18px;
+}
+
+.hero h1 span{
+    color:#6ea1ff;
+}
+
+.hero p{
+    font-size:18px;
+    color:#d1d8e6;
+    line-height:1.7;
+    max-width:580px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:30px;
+}
+
+.btn{
+    border:none;
+    outline:none;
+    padding:13px 22px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:15px;
+}
+
+.primary-btn{
+    background:#4f7df3;
+    color:white;
+}
+
+.primary-btn:hover{
+    background:#3868db;
+}
+
+.secondary-btn{
+    background:white;
+    color:#172033;
+}
+
+/* HERO CARD */
+
+.hero-card{
+    width:330px;
+    background:white;
+    color:#172033;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+}
+
+.hero-card h3{
+    margin-bottom:18px;
+}
+
+.hero-stat{
+    padding:15px;
+    background:#f6f8fc;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.hero-stat strong{
+    display:block;
+    font-size:25px;
+    color:#3b6ee8;
+}
+
+/* ================= MAIN CONTAINER ================= */
+
+.container{
+    width:86%;
+    max-width:1250px;
+    margin:auto;
+}
+
+/* ================= DASHBOARD ================= */
+
+.section{
+    padding:65px 0;
+}
+
+.section-title{
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:32px;
+    margin-bottom:7px;
+}
+
+.section-title p{
+    color:#667085;
+}
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat-card{
+    background:white;
+    border-radius:14px;
+    padding:25px;
+    box-shadow:0 5px 25px rgba(0,0,0,.06);
+    border:1px solid #edf0f5;
+}
+
+.stat-card p{
+    color:#667085;
+    font-size:14px;
+}
+
+.stat-card h3{
+    font-size:34px;
+    margin-top:10px;
+}
+
+.stat-card:nth-child(1) h3{
+    color:#3468e8;
+}
+
+.stat-card:nth-child(2) h3{
+    color:#8a55dd;
+}
+
+.stat-card:nth-child(3) h3{
+    color:#e9912a;
+}
+
+.stat-card:nth-child(4) h3{
+    color:#21a366;
+}
+
+/* ================= FORM ================= */
+
+.application-section{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:0 6px 25px rgba(0,0,0,.06);
+    margin-bottom:40px;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+}
+
+.form-group label{
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.form-group input,
+.form-group select{
+    padding:13px;
+    border:1px solid #d8deea;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#4f7df3;
+}
+
+.full-width{
+    grid-column:1/-1;
+}
+
+/* ================= SEARCH ================= */
+
+.tools{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.search-box{
+    flex:1;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #dce1ea;
+    border-radius:8px;
+    outline:none;
+}
+
+.tools select{
+    padding:13px;
+    border:1px solid #dce1ea;
+    border-radius:8px;
+}
+
+/* ================= TABLE ================= */
+
+.table-box{
+    background:white;
+    border-radius:15px;
+    overflow:auto;
+    box-shadow:0 5px 25px rgba(0,0,0,.06);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:850px;
+}
+
+thead{
+    background:#101828;
+    color:white;
+}
+
+th,
+td{
+    text-align:left;
+    padding:16px;
+}
+
+tbody tr{
+    border-bottom:1px solid #edf0f5;
+}
+
+tbody tr:hover{
+    background:#f8faff;
+}
+
+.status{
+    display:inline-block;
+    padding:6px 11px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.Applied{
+    background:#eaf0ff;
+    color:#3569e8;
+}
+
+.Interview{
+    background:#fff0db;
+    color:#c87314;
+}
+
+.Offer{
+    background:#e3f7eb;
+    color:#198b4b;
+}
+
+.Rejected{
+    background:#ffe6e6;
+    color:#d84141;
+}
+
+.action-btn{
+    border:none;
+    padding:7px 10px;
+    margin-right:5px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.delete-btn{
+    background:#ffe7e7;
+    color:#cf3333;
+}
+
+.edit-btn{
+    background:#e8efff;
+    color:#3569e8;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.feature{
+    background:white;
+    padding:28px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.feature-icon{
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eaf0ff;
+    border-radius:12px;
+    font-size:25px;
+    margin-bottom:17px;
+}
+
+.feature h3{
+    margin-bottom:9px;
+}
+
+.feature p{
+    color:#667085;
+    line-height:1.6;
+}
+
+/* ================= EMPTY ================= */
+
+.empty{
+    text-align:center;
+    padding:40px;
+    color:#667085;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    background:#101828;
+    color:#ccc;
+    padding:35px 7%;
+    text-align:center;
+}
+
+footer strong{
+    color:white;
+}
+
+/* ================= NOTIFICATION ================= */
+
+.toast{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    padding:15px 20px;
+    background:#101828;
+    color:white;
+    border-radius:8px;
+    opacity:0;
+    transform:translateY(30px);
+    pointer-events:none;
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .hero-card{
+        width:100%;
+    }
+
+    .dashboard{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:16px 5%;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .hero{
+        padding:55px 6%;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .container{
+        width:92%;
+    }
+
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full-width{
+        grid-column:auto;
+    }
+
+    .tools{
+        flex-direction:column;
+    }
+
+    .tools select{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        JobTrack<span>Pro</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="#dashboard">Dashboard</a>
+        <a href="#add-job">Add Job</a>
+        <a href="#applications">Applications</a>
+        <a href="#features">Features</a>
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            🚀 Smart Career Management Tool
+        </div>
+
+        <h1>
+            Organize Your <span>Job Search</span> Like a Pro
+        </h1>
+
+        <p>
+            Track job applications, interviews and offers in one
+            beautiful dashboard. Your application data stays saved
+            automatically on your device.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+            class="btn primary-btn"
+            onclick="document.getElementById('add-job').scrollIntoView()">
+                Add Application
+            </button>
+
+            <button
+            class="btn secondary-btn"
+            onclick="document.getElementById('applications').scrollIntoView()">
+                View Applications
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h3>Career Dashboard</h3>
+
+        <div class="hero-stat">
+            <strong id="heroTotal">0</strong>
+            Total Applications
+        </div>
+
+        <div class="hero-stat">
+            <strong id="heroInterview">0</strong>
+            Interviews
+        </div>
+
+        <div class="hero-stat">
+            <strong id="heroOffer">0</strong>
+            Job Offers
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<main class="container">
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section class="section" id="dashboard">
+
+    <div class="section-title">
+
+        <h2>Application Dashboard</h2>
+
+        <p>
+            An overview of your current job search progress.
+        </p>
+
+    </div>
+
+
+    <div class="dashboard">
+
+        <div class="stat-card">
+            <p>Total Applications</p>
+            <h3 id="totalCount">0</h3>
+        </div>
+
+        <div class="stat-card">
+            <p>Applied</p>
+            <h3 id="appliedCount">0</h3>
+        </div>
+
+        <div class="stat-card">
+            <p>Interviews</p>
+            <h3 id="interviewCount">0</h3>
+        </div>
+
+        <div class="stat-card">
+            <p>Offers</p>
+            <h3 id="offerCount">0</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= ADD APPLICATION ================= -->
+
+<section class="section" id="add-job">
+
+    <div class="section-title">
+
+        <h2>Add Job Application</h2>
+
+        <p>
+            Save a new company and track your application.
+        </p>
+
+    </div>
+
+
+    <div class="application-section">
+
+        <form id="jobForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Company Name</label>
+
+                    <input
+                    type="text"
+                    id="company"
+                    placeholder="Example: Google"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Job Role</label>
+
+                    <input
+                    type="text"
+                    id="role"
+                    placeholder="Example: Frontend Developer"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Location</label>
+
+                    <input
+                    type="text"
+                    id="location"
+                    placeholder="Example: Noida">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                        <option value="Applied">
+                            Applied
+                        </option>
+
+                        <option value="Interview">
+                            Interview
+                        </option>
+
+                        <option value="Offer">
+                            Offer
+                        </option>
+
+                        <option value="Rejected">
+                            Rejected
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Application Date</label>
+
+                    <input
+                    type="date"
+                    id="date"
+                    required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Job Link</label>
+
+                    <input
+                    type="url"
+                    id="jobLink"
+                    placeholder="https://example.com/job">
+
+                </div>
+
+
+                <div class="full-width">
+
+                    <button
+                    type="submit"
+                    class="btn primary-btn"
+                    id="submitButton">
+
+                        Save Application
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= APPLICATIONS ================= -->
+
+<section class="section" id="applications">
+
+    <div class="section-title">
+
+        <h2>Your Applications</h2>
+
+        <p>
+            Search, filter and manage your saved job applications.
+        </p>
+
+    </div>
+
+
+    <div class="tools">
+
+        <div class="search-box">
+
+            <input
+            type="text"
+            id="searchInput"
+            placeholder="Search company, role or location...">
+
+        </div>
+
+
+        <select id="filterStatus">
+
+            <option value="All">
+                All Status
+            </option>
+
+            <option value="Applied">
+                Applied
+            </option>
+
+            <option value="Interview">
+                Interview
+            </option>
+
+            <option value="Offer">
+                Offer
+            </option>
+
+            <option value="Rejected">
+                Rejected
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="table-box">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Company</th>
+                    <th>Role</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Job</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="jobTableBody">
+
+            </tbody>
+
+        </table>
+
+
+        <div
+        class="empty"
+        id="emptyMessage">
+
+            No applications added yet.
+            Add your first job application above.
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FEATURES ================= -->
+
+<section
+class="section"
+id="features">
+
+    <div class="section-title">
+
+        <h2>Project Features</h2>
+
+        <p>
+            Built using modern frontend web technologies.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                💾
+            </div>
+
+            <h3>Local Data Storage</h3>
+
+            <p>
+                Applications remain saved in the browser
+                even after the website is closed or refreshed.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>Smart Search & Filters</h3>
+
+            <p>
+                Instantly search applications by company,
+                role or location and filter them by status.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>Fully Responsive</h3>
+
+            <p>
+                The interface works smoothly on desktop,
+                tablet and mobile screens.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Built by <strong>Shivam Shukla</strong>
+        • HTML • CSS • JavaScript
+    </p>
+
+</footer>
+
+
+<div
+class="toast"
+id="toast">
+
+Application saved successfully.
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+let applications =
+JSON.parse(localStorage.getItem("jobApplications")) || [];
+
+let editingId = null;
+
+
+/* ================= ELEMENTS ================= */
+
+const jobForm =
+document.getElementById("jobForm");
+
+const company =
+document.getElementById("company");
+
+const role =
+document.getElementById("role");
+
+const locationInput =
+document.getElementById("location");
+
+const statusInput =
+document.getElementById("status");
+
+const dateInput =
+document.getElementById("date");
+
+const jobLink =
+document.getElementById("jobLink");
+
+const tableBody =
+document.getElementById("jobTableBody");
+
+const searchInput =
+document.getElementById("searchInput");
+
+const filterStatus =
+document.getElementById("filterStatus");
+
+const emptyMessage =
+document.getElementById("emptyMessage");
+
+const submitButton =
+document.getElementById("submitButton");
+
+
+/* TODAY DATE */
+
+dateInput.value =
+new Date().toISOString().split("T")[0];
+
+
+/* ================= SAVE ================= */
+
+function saveApplications(){
+
+    localStorage.setItem(
+        "jobApplications",
+        JSON.stringify(applications)
+    );
+
+}
+
+
+/* ================= ADD APPLICATION ================= */
+
+jobForm.addEventListener(
+"submit",
+function(event){
+
+    event.preventDefault();
+
+
+    if(editingId){
+
+        applications =
+        applications.map(function(job){
+
+            if(job.id === editingId){
+
+                return{
+
+                    ...job,
+
+                    company:
+                    company.value.trim(),
+
+                    role:
+                    role.value.trim(),
+
+                    location:
+                    locationInput.value.trim(),
+
+                    status:
+                    statusInput.value,
+
+                    date:
+                    dateInput.value,
+
+                    link:
+                    jobLink.value.trim()
+
+                };
+
+            }
+
+            return job;
+
+        });
+
+
+        editingId = null;
+
+        submitButton.textContent =
+        "Save Application";
+
+        showToast(
+            "Application updated successfully."
+        );
+
+    }
+
+    else{
+
+        const application = {
+
+            id:
+            Date.now(),
+
+            company:
+            company.value.trim(),
+
+            role:
+            role.value.trim(),
+
+            location:
+            locationInput.value.trim(),
+
+            status:
+            statusInput.value,
+
+            date:
+            dateInput.value,
+
+            link:
+            jobLink.value.trim()
+
+        };
+
+
+        applications.unshift(application);
+
+
+        showToast(
+            "Application saved successfully."
+        );
+
+    }
+
+
+    saveApplications();
+
+    jobForm.reset();
+
+    dateInput.value =
+    new Date().toISOString().split("T")[0];
+
+    renderApplications();
+
+});
+
+
+/* ================= RENDER ================= */
+
+function renderApplications(){
+
+    const search =
+    searchInput.value.toLowerCase();
+
+    const selectedStatus =
+    filterStatus.value;
+
+
+    const filteredApplications =
+    applications.filter(function(job){
+
+        const matchesSearch =
+
+        job.company.toLowerCase().includes(search) ||
+
+        job.role.toLowerCase().includes(search) ||
+
+        job.location.toLowerCase().includes(search);
+
+
+        const matchesStatus =
+
+        selectedStatus === "All" ||
+
+        job.status === selectedStatus;
+
+
+        return matchesSearch && matchesStatus;
+
+    });
+
+
+    tableBody.innerHTML = "";
+
+
+    if(filteredApplications.length === 0){
+
+        emptyMessage.style.display =
+        "block";
+
+    }
+
+    else{
+
+        emptyMessage.style.display =
+        "none";
+
+    }
+
+
+    filteredApplications.forEach(
+    function(job){
+
+        const row =
+        document.createElement("tr");
+
+
+        const jobButton = job.link
+
+        ?
+
+        `<a href="${job.link}"
+        target="_blank"
+        style="color:#3569e8;text-decoration:none;font-weight:bold;">
+        Open
+        </a>`
+
+        :
+
+        "-";
+
+
+        row.innerHTML = `
+
+        <td>
+        <strong>${escapeHTML(job.company)}</strong>
+        </td>
+
+        <td>
+        ${escapeHTML(job.role)}
+        </td>
+
+        <td>
+        ${escapeHTML(job.location || "-")}
+        </td>
+
+        <td>
+        ${formatDate(job.date)}
+        </td>
+
+        <td>
+        <span class="status ${job.status}">
+        ${job.status}
+        </span>
+        </td>
+
+        <td>
+        ${jobButton}
+        </td>
+
+        <td>
+
+        <button
+        class="action-btn edit-btn"
+        onclick="editApplication(${job.id})">
+        Edit
+        </button>
+
+        <button
+        class="action-btn delete-btn"
+        onclick="deleteApplication(${job.id})">
+        Delete
+        </button>
+
+        </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    });
+
+
+    updateDashboard();
+
+}
+
+
+/* ================= DELETE ================= */
+
+function deleteApplication(id){
+
+    const confirmDelete =
+    confirm(
+        "Do you want to delete this application?"
+    );
+
+
+    if(!confirmDelete){
+        return;
+    }
+
+
+    applications =
+    applications.filter(
+        job => job.id !== id
+    );
+
+
+    saveApplications();
+
+    renderApplications();
+
+    showToast(
+        "Application deleted."
+    );
+
+}
+
+
+/* ================= EDIT ================= */
+
+function editApplication(id){
+
+    const job =
+    applications.find(
+        job => job.id === id
+    );
+
+
+    if(!job){
+        return;
+    }
+
+
+    company.value =
+    job.company;
+
+    role.value =
+    job.role;
+
+    locationInput.value =
+    job.location;
+
+    statusInput.value =
+    job.status;
+
+    dateInput.value =
+    job.date;
+
+    jobLink.value =
+    job.link;
+
+
+    editingId = id;
+
+
+    submitButton.textContent =
+    "Update Application";
+
+
+    document
+    .getElementById("add-job")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ================= DASHBOARD ================= */
+
+function updateDashboard(){
+
+    const total =
+    applications.length;
+
+
+    const applied =
+    applications.filter(
+        job => job.status === "Applied"
+    ).length;
+
+
+    const interviews =
+    applications.filter(
+        job => job.status === "Interview"
+    ).length;
+
+
+    const offers =
+    applications.filter(
+        job => job.status === "Offer"
+    ).length;
+
+
+    document
+    .getElementById("totalCount")
+    .textContent = total;
+
+
+    document
+    .getElementById("appliedCount")
+    .textContent = applied;
+
+
+    document
+    .getElementById("interviewCount")
+    .textContent = interviews;
+
+
+    document
+    .getElementById("offerCount")
+    .textContent = offers;
+
+
+    document
+    .getElementById("heroTotal")
+    .textContent = total;
+
+
+    document
+    .getElementById("heroInterview")
+    .textContent = interviews;
+
+
+    document
+    .getElementById("heroOffer")
+    .textContent = offers;
+
+}
+
+
+/* ================= SEARCH ================= */
+
+searchInput.addEventListener(
+"input",
+renderApplications
+);
+
+
+filterStatus.addEventListener(
+"change",
+renderApplications
+);
+
+
+/* ================= DATE ================= */
+
+function formatDate(date){
+
+    if(!date){
+        return "-";
+    }
+
+
+    const d =
+    new Date(date + "T00:00:00");
+
+
+    return d.toLocaleDateString(
+        "en-IN",
+        {
+            day:"2-digit",
+            month:"short",
+            year:"numeric"
+        }
+    );
+
+}
+
+
+/* ================= SECURITY ================= */
+
+function escapeHTML(text){
+
+    const div =
+    document.createElement("div");
+
+    div.textContent =
+    text || "";
+
+    return div.innerHTML;
+
+}
+
+
+/* ================= NOTIFICATION ================= */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+
+    toast.textContent =
+    message;
+
+
+    toast.classList.add("show");
+
+
+    setTimeout(
+    function(){
+
+        toast.classList.remove("show");
+
+    },
+    2500
+    );
+
+}
+
+
+/* ================= FIRST LOAD ================= */
+
+renderApplications();
+
+</script>
+
+</body>
+</html>
